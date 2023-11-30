@@ -9,13 +9,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.myapp.mycupcake.R
 
 @Composable
-fun CakeOrderScreen() {
+fun CakeOrderScreen(
+    quantityOptions: List<Pair<Int, Int>>,
+    onNextButtonClicked: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -29,21 +34,31 @@ fun CakeOrderScreen() {
             style = MaterialTheme.typography.bodySmall
 
         )
+        Column() {
+            quantityOptions.forEach { item ->
+                SelectQuantityButton(
+                    labelResourceId = item.first,
+                    onClick = { onNextButtonClicked(item.second) }
+                )
+
+            }
+        }
+
     }
 }
 
 @Composable
 fun SelectQuantityButton(
-    @StringRes labelResourceId:Int,
-    onClick:()-> Unit,
-){
-Button(onClick = {}) {
-
-}
+    @StringRes labelResourceId: Int,
+    onClick: () -> Unit,
+) {
+    Button(onClick = onClick) {
+        Text(stringResource(labelResourceId))
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun CakeOrderScreenPreview(){
+fun CakeOrderScreenPreview() {
     CakeOrderScreen()
 }
