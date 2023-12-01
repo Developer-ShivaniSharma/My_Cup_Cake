@@ -1,4 +1,4 @@
-package com.myapp.mycupcake.cakeui
+package com.myapp.mycupcake.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -31,12 +31,13 @@ fun CakeOrderScreen(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().padding(top = 8.dp),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
             painter = painterResource(R.drawable.cupcake),
+            modifier = Modifier.width(300.dp),
             contentDescription = null
         )
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
