@@ -10,7 +10,7 @@ import com.myapp.mycupcake.R
 @Composable
 fun FormattedPriceLabel(subtotal:String, modifier: Modifier=Modifier){
 Text(
-    text = stringResource(R.string.subtotal_price),
+    text = stringResource(R.string.subtotal_price, subtotal),
     modifier=modifier,
     style = MaterialTheme.typography.headlineSmall
 )
