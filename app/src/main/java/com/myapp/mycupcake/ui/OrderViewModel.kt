@@ -42,7 +42,35 @@ class OrderViewModel : ViewModel() {
         }
     }
 
-    fun calculatePrice(
+    /**
+     * Set the falavour of the cupcake for the order
+     * The user can select only one flavour for the whole order
+     */
+
+    fun setFlavour(desiredFlavour: String) {
+        _uiState.update { currentState ->
+            currentState.copy(flavor = desiredFlavour)
+        }
+    }
+
+    /**
+     * Set the pickup date of the order
+     */
+    fun setPickupDate(pickupDate: String) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                date = pickupDate,
+                price = calculatePrice(pickupDate = pickupDate)
+            )
+        }
+    }
+
+    /**
+     * The price will be calculated on the basis of no. of cakes quantity and the pickup date
+     * so we pass these two parameters.
+     */
+
+     private fun calculatePrice(
         quantity: Int = _uiState.value.quantity,
         pickupDate: String = _uiState.value.date
     ): String {
@@ -54,15 +82,15 @@ class OrderViewModel : ViewModel() {
         return formatPrice
     }
 
-    fun pickupOption(): List<String> {
-        val dateOption = mutableListOf<String>(),
-        val formatter = SimpleDateFormat("E MMM D", Locale.getDefault()),
+    private fun pickupOption(): List<String> {
+        val dateOption = mutableListOf<String>()
+        val formatter = SimpleDateFormat("E MMM D", Locale.getDefault())
         val calendar = Calendar.getInstance()
         repeat(4) {
             dateOption.add(formatter.format(calendar.time))
-            calendar.add(Calendar.DATE,1)
+            calendar.add(Calendar.DATE, 1)
         }
-       return dateOption
+        return dateOption
     }
 
 }

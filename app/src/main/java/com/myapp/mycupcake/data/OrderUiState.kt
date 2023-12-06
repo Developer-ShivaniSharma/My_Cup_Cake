@@ -4,7 +4,7 @@ package com.myapp.mycupcake.data
  *UI that represent the current UI state in terms of [flavour],[quantity],[dateOption]
  *Selected pickup [date] & [price]
  */
-/
+
 data class OrderUiState(
     /** Selected cupcake quantity (1, 6, 12) */
     val quantity: Int = 0,
