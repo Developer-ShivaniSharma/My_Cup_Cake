@@ -56,7 +56,7 @@ fun OrderSummaryScreen(
         Pair(stringResource(R.string.pickup_date), orderUIState.date)
     )
     Column(
-        modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
+        modifier = Modifier.fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column(
@@ -77,7 +77,7 @@ fun OrderSummaryScreen(
 
         }
         Column(
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)),
+            modifier = Modifier,
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {
             Button(
