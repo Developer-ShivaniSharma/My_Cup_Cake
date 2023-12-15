@@ -65,6 +65,10 @@ class OrderViewModel : ViewModel() {
         }
     }
 
+    fun resetOrder(){
+        _uiState.value=OrderUiState(pickupOptions = pickupOption())
+    }
+
     /**
      * The price will be calculated on the basis of no. of cakes quantity and the pickup date
      * so we pass these two parameters.
