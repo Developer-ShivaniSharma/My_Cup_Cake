@@ -10,37 +10,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
+import com.myapp.mycupcake.ui.CakeOrderScreen
+import com.myapp.mycupcake.ui.CupCakeApp
 import com.myapp.mycupcake.ui.theme.MyCupCakeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             MyCupCakeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                CupCakeApp()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyCupCakeTheme {
-        Greeting("Android")
     }
 }
